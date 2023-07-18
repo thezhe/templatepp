@@ -26,17 +26,17 @@ Options:
 ``OWNER_REPO_TAG_STRING``
   A string in the form of owner/repo@tag (e.g., "thezhe/CppTemplate@v1.0.0").
 ]]
-function(fetch_github OWNER_REPO_TAG_STRING)
-    string(REGEX REPLACE "[/@]" ";" OWNER_REPO_TAG_LIST ${OWNER_REPO_TAG_STRING})
-    list(POP_FRONT OWNER_REPO_TAG_LIST OWNER REPO TAG)
+function(fetch_github ownerRepoTagString)
+    string(REGEX REPLACE "[/@]" ";" owner_repo_tag_list ${ownerRepoTagString})
+    list(POP_FRONT owner_repo_tag_list owner repo tag)
 
     FetchContent_Declare(
-        ${REPO}_${TAG}
-        GIT_REPOSITORY "https://github.com/${OWNER}/${REPO}.git"
-        GIT_TAG ${TAG}
+        ${repo}_${tag}
+        GIT_REPOSITORY "https://github.com/${owner}/${repo}.git"
+        GIT_TAG ${tag}
         GIT_SHALLOW ON
     )
-    FetchContent_MakeAvailable(${REPO}_${TAG})
+    FetchContent_MakeAvailable(${repo}_${tag})
 endfunction()
 
 #[[
@@ -49,9 +49,9 @@ The name of the library.
 Note:
 Also adds "${PROJECT_NAME}::${INTERFACE_NAME}" as a valid library name.
 ]]
-function(add_interface INTERFACE_NAME)
-    add_library(${INTERFACE_NAME} INTERFACE)
-    add_library(${PROJECT_NAME}::${INTERFACE_NAME} ALIAS ${INTERFACE_NAME})
+function(add_interface interfaceName)
+    add_library(${interfaceName} INTERFACE)
+    add_library(${PROJECT_NAME}::${interfaceName} ALIAS ${interfaceName})
 endfunction()
 
 #[[
@@ -61,8 +61,8 @@ Options:
 ``FILE_PATH``
 File path relative to ${CMAKE_SOURCE_DIR}.
 ]]
-function(install_file_to_prefix FILE_PATH)
-    install(FILES ${FILE_PATH} DESTINATION ${CMAKE_INSTALL_PREFIX})
+function(install_file_to_prefix filePath)
+    install(FILES ${filePath} DESTINATION ${CMAKE_INSTALL_PREFIX})
 endfunction()
 
 #[[
@@ -71,8 +71,8 @@ Install a target to ${CMAKE_INSTALL_PREFIX}.
 Options:
 ``TARGET_NAME``
 ]]
-function(install_target_to_prefix TARGET_NAME)
-    install(TARGETS ${TARGET_NAME} DESTINATION ${CMAKE_INSTALL_PREFIX})
+function(install_target_to_prefix targetName)
+    install(TARGETS ${targetName} DESTINATION ${CMAKE_INSTALL_PREFIX})
 endfunction()
 
 # ############################################################################################################

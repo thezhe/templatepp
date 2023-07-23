@@ -1,9 +1,9 @@
 #include "CppTemplate/CppTemplate.hpp"
 #include <cstdlib>
 
-int main(int argc, const char** argv) // NOLINT
+int main([[maybe_unused]] int argc, [[maybe_unused]] const char** argv) // NOLINT
 {
-    CppTemplate::CppTemplate cpp_template{}; // NOLINT
+    [[maybe_unused]] CppTemplate::CppTemplate cpp_template{}; // NOLINT
 
     return EXIT_SUCCESS;
 }

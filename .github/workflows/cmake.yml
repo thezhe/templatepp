@@ -40,6 +40,8 @@ jobs:
     - name: Install
       run: cmake --install ${{env.BUILD_PATH}} --config ${{env.BUILD_TYPE}} --strip
 
+    # Note that after this point, GitHub Actions will clear all artifact permissions.
+    # https://github.com/actions/upload-artifact/issues/38
     - name: Upload Artifact
       uses: actions/upload-artifact@v3.1.2
       with:

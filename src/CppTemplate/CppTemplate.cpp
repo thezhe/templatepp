@@ -1,6 +1,7 @@
-#include "CppTemplate/CppTemplate.hpp" // IWYU pragma: keep
+// Uncomment and add definitions if needed.
 
-namespace CppTemplate
-{
-void CppTemplate::method() {}
-} // namespace CppTemplate
+// #include "CppTemplate/CppTemplate.hpp"
+
+// namespace CppTemplate
+// {
+// } // namespace CppTemplate

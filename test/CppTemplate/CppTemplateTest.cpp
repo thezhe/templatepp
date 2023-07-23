@@ -2,12 +2,12 @@
 #include <cassert>
 #include <cstdlib>
 
-#define assert_that(condition) assert((condition)) // NOLINT
+#define assert_true(condition) assert((condition)) // NOLINT
 
-int main() // NOLINT
+auto main([[maybe_unused]] int argc, [[maybe_unused]] const char** argv) -> int
 {
     CppTemplate::CppTemplate cpp_template{};
-    assert_that(&cpp_template);
+    assert_true(&cpp_template);
 
     return EXIT_SUCCESS;
 }

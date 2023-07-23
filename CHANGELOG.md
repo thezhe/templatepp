@@ -1,4 +1,7 @@
-# v1.0.0 - 2023/06/DD
+# v1.0.0 - 2023/07/DD
+
 ## Added
-- CMake project structure
-- .gitignore
+
+- CMake/CTest project
+- `*.md` files
+- `.gitignore`

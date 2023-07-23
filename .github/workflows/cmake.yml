@@ -14,6 +14,7 @@ env:
   BUILD_PATH: ${{github.workspace}}/build
   BUILD_TYPE: Release
   INSTALL_PREFIX: ${{github.workspace}}/install
+  ZIP_PREFIX: ${{github.workspace}}/zip
   PARALLEL_LEVEL: 2
 
 jobs:
@@ -53,12 +54,19 @@ jobs:
         contents: write
 
     steps:
-    - name: Download Artifact
+    - name: Download Artifacts
       uses: actions/download-artifact@v3.0.2
       with:
         path: ${{env.INSTALL_PREFIX}}
 
+    - name: Zip Artifacts
+      run: |
+        cd ${{env.INSTALL_PREFIX}}
+        for i in */; do zip -r "${{env.ZIP_PREFIX}}/${i%/}.zip" "$i" &done; wait
+
     - name: Release
       uses: ncipollo/release-action@v1.12.0
       with:
-        artifacts: "${{env.INSTALL_PREFIX}}/*"
+        artifacts: "${{env.ZIP_PREFIX}}/*"
+
+# TODO double check CMakeLists.txt formatting and lint

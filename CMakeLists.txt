@@ -23,7 +23,7 @@ include(FetchContent)
 Shallow clone and add a CMake project from GitHub.
 
 Options:
-``OWNER_REPO_TAG_STRING``
+`ownerRepoTagString`
   A string in the form of owner/repo@tag (e.g., "thezhe/CppTemplate@v1.0.0").
 ]]
 function(fetch_github ownerRepoTagString)
@@ -43,11 +43,11 @@ endfunction()
 Add a header-only library.
 
 Options:
-``INTERFACE_NAME``
+`interfaceName`
 The name of the library.
 
 Note:
-Also adds "${PROJECT_NAME}::${INTERFACE_NAME}" as a valid library name.
+Also adds `${PROJECT_NAME}::${interfaceName}` as a valid library name.
 ]]
 function(add_interface interfaceName)
     add_library(${interfaceName} INTERFACE)
@@ -55,10 +55,34 @@ function(add_interface interfaceName)
 endfunction()
 
 #[[
+Add a test executable for a library.
+
+Options:
+`testName`
+The output variable. Set to the name of the test executable target.
+
+`libraryName`
+The name of the library target to link to `testName`.
+#]]
+function(add_library_test testName libraryName)
+    string(REGEX REPLACE "::" "_" test_name ${libraryName})
+    string(APPEND test_name "Test")
+
+    add_executable(${test_name})
+    add_test(${test_name} ${test_name})
+    target_link_libraries(${test_name} PRIVATE ${libraryName})
+
+    set(${testName}
+        ${test_name}
+        PARENT_SCOPE
+    )
+endfunction()
+
+#[[
 Install a file to ${CMAKE_INSTALL_PREFIX}.
 
 Options:
-``FILE_PATH``
+``filePath``
 File path relative to ${CMAKE_SOURCE_DIR}.
 ]]
 function(install_file_to_prefix filePath)
@@ -67,9 +91,6 @@ endfunction()
 
 #[[
 Install a target to ${CMAKE_INSTALL_PREFIX}.
-
-Options:
-``TARGET_NAME``
 ]]
 function(install_target_to_prefix targetName)
     install(TARGETS ${targetName} DESTINATION ${CMAKE_INSTALL_PREFIX})
@@ -79,7 +100,7 @@ endfunction()
 # Deps
 # ############################################################################################################
 
-# fetch_github("thezhe/CppConfigs@v0.9") # Adds opinionated linter/formatter/IDE/CI files to source directory.
+# fetch_github("thezhe/CppConfigs@v0.9.1") # Optional opinionated C++ config files
 
 # ############################################################################################################
 # Src
@@ -104,12 +125,8 @@ target_sources(CppTemplate PRIVATE src/main.cpp)
 
 enable_testing()
 
-# CppTemplateTest
-add_executable(CppTemplateTest)
-add_test(CppTemplateTest CppTemplateTest)
-target_link_libraries(CppTemplateTest PRIVATE CppTemplate::libCppTemplate)
-
-target_sources(CppTemplateTest PRIVATE test/CppTemplate/CppTemplateTest.cpp)
+add_library_test(CppTemplateTest CppTemplate::libCppTemplate)
+target_sources(${CppTemplateTest} PRIVATE test/CppTemplate/CppTemplateTest.cpp)
 
 # ############################################################################################################
 # Install

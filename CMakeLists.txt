@@ -79,17 +79,6 @@ function(add_library_test testName libraryName)
 endfunction()
 
 #[[
-Install a file to ${CMAKE_INSTALL_PREFIX}.
-
-Options:
-``filePath``
-File path relative to ${CMAKE_SOURCE_DIR}.
-]]
-function(install_file_to_prefix filePath)
-    install(FILES ${filePath} DESTINATION ${CMAKE_INSTALL_PREFIX})
-endfunction()
-
-#[[
 Install a target to ${CMAKE_INSTALL_PREFIX}.
 ]]
 function(install_target_to_prefix targetName)
@@ -132,5 +121,4 @@ target_sources(${CppTemplateTest} PRIVATE test/CppTemplate/CppTemplateTest.cpp)
 # Install
 # ############################################################################################################
 
-install_file_to_prefix(CHANGELOG.md)
 install_target_to_prefix(CppTemplate)

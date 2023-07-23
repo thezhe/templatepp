@@ -4,9 +4,9 @@
 
 #define assert_true(condition) assert((condition)) // NOLINT
 
-auto main([[maybe_unused]] int argc, [[maybe_unused]] const char** argv) -> int
+int main(int argc, const char** argv) // NOLINT
 {
-    CppTemplate::CppTemplate cpp_template{};
+    CppTemplate::CppTemplate cpp_template{}; // NOLINT
     assert_true(&cpp_template);
 
     return EXIT_SUCCESS;

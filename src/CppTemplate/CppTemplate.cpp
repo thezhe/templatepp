@@ -1,1 +1,1 @@
-#include "CppTemplate/CppTemplate.hpp" //NOLINT
+#include "CppTemplate/CppTemplate.hpp" // IWYU pragma: keep

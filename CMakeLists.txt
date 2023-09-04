@@ -42,48 +42,27 @@ include(${CPM_DOWNLOAD_LOCATION})
 # ############################################################################################################
 
 #[[
-Add a header-only library.
-
-Options:
-`interfaceName`
-The name of the library.
-
-Note:
-Also adds `${PROJECT_NAME}::${interfaceName}` as a valid library name.
-]]
-function(add_interface interfaceName)
-    add_library(${interfaceName} INTERFACE)
-    add_library(${PROJECT_NAME}::${interfaceName} ALIAS ${interfaceName})
-endfunction()
-
-#[[
 Add a test executable for a library.
 
 Options:
-`testName`
-The output variable. Set to the name of the test executable target.
-
 `libraryName`
-The name of the library target to link to `testName`.
+The name of the library to test.
+Creates an executable from the file in `test/${PROJECT_NAME}/${libraryName}.cpp`.
 #]]
-function(add_library_test testName libraryName)
-    string(REGEX REPLACE "::" "_" test_name ${libraryName})
-    string(APPEND test_name "Test")
+function(add_library_test libraryName)
+    string(CONCAT test_name ${libraryName} "Test")
 
     add_executable(${test_name})
-    add_test(${test_name} ${test_name})
     target_link_libraries(${test_name} PRIVATE ${libraryName})
+    target_sources(${test_name} PRIVATE test/${PROJECT_NAME}/${libraryName}.cpp)
 
-    set(${testName}
-        ${test_name}
-        PARENT_SCOPE
-    )
+    add_test(${test_name} ${test_name})
 endfunction()
 
 #[[
 Install a target to ${CMAKE_INSTALL_PREFIX}.
 ]]
-function(install_target_to_prefix targetName)
+function(install_target targetName)
     install(TARGETS ${targetName} DESTINATION ${CMAKE_INSTALL_PREFIX})
 endfunction()
 
@@ -91,25 +70,16 @@ endfunction()
 # Deps
 # ############################################################################################################
 
-cpmaddpackage("gh:fmtlib/fmt#7.1.3")
-# cpmaddpackage("gh:thezhe/CppConfigs@0.9.1") # Optional opinionated C++ config files
+# cpmaddpackage("gh:fmtlib/fmt#7.1.3") cpmaddpackage("gh:thezhe/CppConfigs@0.9.1") # Optional opinionated C++
+# config files
 
 # ############################################################################################################
 # Src
 # ############################################################################################################
 
-# CppTemplate::libCppTemplate
-add_library(libCppTemplate STATIC)
-add_library(CppTemplate::libCppTemplate ALIAS libCppTemplate)
-
-target_include_directories(libCppTemplate PUBLIC include)
-target_sources(libCppTemplate PRIVATE src/CppTemplate/CppTemplate.cpp)
-
-# CppTemplate
-add_executable(CppTemplate)
-target_link_libraries(CppTemplate PRIVATE libCppTemplate)
-
-target_sources(CppTemplate PRIVATE src/main.cpp)
+add_library(CppTemplate STATIC)
+target_include_directories(CppTemplate PUBLIC include)
+target_sources(CppTemplate PRIVATE src/CppTemplate/CppTemplate.cpp)
 
 # ############################################################################################################
 # Test
@@ -117,11 +87,18 @@ target_sources(CppTemplate PRIVATE src/main.cpp)
 
 enable_testing()
 
-add_library_test(CppTemplateTest CppTemplate::libCppTemplate)
-target_sources(${CppTemplateTest} PRIVATE test/CppTemplate/CppTemplateTest.cpp)
+add_library_test(CppTemplate)
+
+# ############################################################################################################
+# App
+# ############################################################################################################
+
+add_executable(App)
+target_link_libraries(App PRIVATE ${PROJECT_NAME})
+target_sources(App PRIVATE src/App.cpp)
 
 # ############################################################################################################
 # Install
 # ############################################################################################################
 
-install_target_to_prefix(CppTemplate)
+install_target(TARGETS main)

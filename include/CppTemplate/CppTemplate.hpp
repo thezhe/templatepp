@@ -6,6 +6,10 @@
 namespace CppTemplate
 {
 
+/*!
+ * @brief
+ *
+ */
 class CppTemplate final
 {
 };

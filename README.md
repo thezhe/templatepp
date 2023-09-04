@@ -13,3 +13,5 @@ A minimalistic, dependency-free, and out-of-source C++ project template.
 ### Dev Environment
 
 [.devcontainer]() #TODO
+
+# TODO add convention over config cmakelist (standard test/src/include/project name info)

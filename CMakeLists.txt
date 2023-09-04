@@ -14,30 +14,32 @@ cmake_minimum_required(VERSION 3.15)
 project(CppTemplate)
 
 # ############################################################################################################
-# Helper Functions
+# CPM
 # ############################################################################################################
 
-include(FetchContent)
+set(CPM_DOWNLOAD_VERSION 0.38.2)
 
-#[[
-Shallow clone and add a CMake project from GitHub.
+if(CPM_SOURCE_CACHE)
+    set(CPM_DOWNLOAD_LOCATION "${CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+elseif(DEFINED ENV{CPM_SOURCE_CACHE})
+    set(CPM_DOWNLOAD_LOCATION "$ENV{CPM_SOURCE_CACHE}/cpm/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+else()
+    set(CPM_DOWNLOAD_LOCATION "${CMAKE_BINARY_DIR}/cmake/CPM_${CPM_DOWNLOAD_VERSION}.cmake")
+endif()
 
-Options:
-`ownerRepoTagString`
-  A string in the form of owner/repo@tag (e.g., "thezhe/CppTemplate@v1.0.0").
-]]
-function(fetch_github ownerRepoTagString)
-    string(REGEX REPLACE "[/@]" ";" owner_repo_tag_list ${ownerRepoTagString})
-    list(POP_FRONT owner_repo_tag_list owner repo tag)
-
-    FetchContent_Declare(
-        ${repo}_${tag}
-        GIT_REPOSITORY "https://github.com/${owner}/${repo}.git"
-        GIT_TAG ${tag}
-        GIT_SHALLOW ON
+if(NOT (EXISTS ${CPM_DOWNLOAD_LOCATION}))
+    message(STATUS "Downloading CPM.cmake to ${CPM_DOWNLOAD_LOCATION}")
+    file(DOWNLOAD
+         https://github.com/TheLartians/CPM.cmake/releases/download/v${CPM_DOWNLOAD_VERSION}/CPM.cmake
+         ${CPM_DOWNLOAD_LOCATION}
     )
-    FetchContent_MakeAvailable(${repo}_${tag})
-endfunction()
+endif()
+
+include(${CPM_DOWNLOAD_LOCATION})
+
+# ############################################################################################################
+# Helper Functions
+# ############################################################################################################
 
 #[[
 Add a header-only library.
@@ -89,7 +91,8 @@ endfunction()
 # Deps
 # ############################################################################################################
 
-# fetch_github("thezhe/CppConfigs@v0.9.1") # Optional opinionated C++ config files
+cpmaddpackage("gh:fmtlib/fmt#7.1.3")
+# cpmaddpackage("gh:thezhe/CppConfigs@0.9.1") # Optional opinionated C++ config files
 
 # ############################################################################################################
 # Src

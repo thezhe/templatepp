@@ -1,14 +1,8 @@
-# CppTemplate
+# Cpp Header-Only Template
 
-A minimalistic, dependency-free, and out-of-source C++ project template.
+A convention-over-configuration, dependency-free, and out-of-source CMake project template. Designed for making header-only C++ libraries.
 
 ## Features
-
-### Source Code
-
-- CMake and CTest compatible project: `(include|src|test)/*.(hpp|cpp)` and `CMakeLists.txt`
-- Markdown docs: `(CHANGELOG|LICENSE|README).md`
-- `.gitignore`
 
 ### Dev Environment
 

@@ -1,18 +1,1 @@
-# Ignore configs and builds
-
-# Config files
-/.clangd
-/.clang-format
-/.editorconfig
-/cmake-format.yaml
-/CPPLINT.cfg
-
-# clangd
-/.cache
-
-# VS Code
-/.vscode
-
-# CMake
 /build
-/install

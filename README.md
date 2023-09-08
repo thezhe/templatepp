@@ -1,11 +1,20 @@
-# Cpp Header-Only Template
+# Single-Header Template
 
-A convention-over-configuration, dependency-free, and out-of-source CMake project template. Designed for making header-only C++ libraries.
+## Interface
 
-## Features
+`include/library.hpp`
 
-### Dev Environment
+## Details
 
-[.devcontainer]() #TODO
+- **`include/library/*.hpp`** - Component implementations.
+- **`include/library/detail/*.hpp`** - Implementation detail.
+- **`CTest.cpp`** - Test executable.
 
-# TODO add convention over config cmakelist (standard test/src/include/project name info)
+## Changelog
+
+### v1.0.0 - 2023/09/DD
+
+#### Added
+
+1. CMake/CTest project
+2. `include` directory

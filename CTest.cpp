@@ -4,10 +4,10 @@
 
 #define assert_true(condition) assert((condition)) // NOLINT
 
-int main([[maybe_unused]] int argc, [[maybe_unused]] const char** argv) // NOLINT
+auto main() -> int
 {
-    [[maybe_unused]] CppTemplate::CppTemplate cpp_template{}; // NOLINT
-    assert_true(&cpp_template);
+    library::Component component{};
+    assert_true(&component);
 
     return EXIT_SUCCESS;
 }

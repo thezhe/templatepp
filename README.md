@@ -6,9 +6,9 @@
 
 ## Details
 
-- **`CTest.cpp`** - Test executable.
-- **`include/library/*.hpp`** - Component implementations.
-- **`include/library/detail/*.hpp`** - Implementation detail.
+- `CTest.cpp` - Test executable.
+- `include/library/*.hpp` - Component implementations.
+- `include/library/detail/*.hpp` - Implementation detail.
 
 ## Changelog
 
@@ -16,5 +16,5 @@
 
 #### Added
 
-1. `CTest.cpp`
-2. `include` directory
+1. CTest.cpp
+2. include directory

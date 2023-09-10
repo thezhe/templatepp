@@ -1,11 +1,11 @@
-# Upload install files as an artifact. All tag pushes also create a release.
+# CMake build, test, install pipline with a release job for tagged commits.
 
 name: CMake
 
 on:
   push:
     branches: [ "master" ]
-    tags: "*"
+    tags: ["*"]
   pull_request:
     branches: [ "master" ]
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3.5.3
+      uses: actions/checkout@v4.0.0
 
     - name: Configure
       run: cmake -B ${{env.BUILD_PATH}} -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_INSTALL_PREFIX=${{env.INSTALL_PREFIX}}
@@ -40,7 +40,7 @@ jobs:
       run: cmake --install ${{env.BUILD_PATH}} --config ${{env.BUILD_TYPE}} --strip
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v3.1.2
+      uses: actions/upload-artifact@v3.1.3
       with:
         name: ${{github.event.repository.name}}_${{github.ref_name}}_${{runner.os}}
         path: ${{env.INSTALL_PREFIX}}
@@ -58,14 +58,10 @@ jobs:
       with:
         path: ${{env.INSTALL_PREFIX}}
 
-    # - name: Zip Artifacts
-    # TODO zip before adding to release
+    - name: Zip Artifacts
+      run: for i in */; do zip -r "${i%/}.zip" "$i"; done
 
     - name: Release
-      uses: ncipollo/release-action@v1.12.0
+      uses: ncipollo/release-action@v1.13.0
       with:
-        artifacts: "${{env.INSTALL_PREFIX}}/*"
-
-
-# TODO double check CMakeLists.txt formatting and lint
-# TODO permissions from artifact/cache to release
+        artifacts: "${{env.INSTALL_PREFIX}}/*.zip"

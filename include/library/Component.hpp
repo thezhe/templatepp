@@ -5,7 +5,7 @@
 namespace library
 {
 
-class Component final : public detail::Detail
+class Component : public detail::Detail
 {
 };
 

@@ -16,5 +16,5 @@
 
 #### Added
 
-1. CTest.cpp
-2. include directory
+- CTest.cpp
+- include directory

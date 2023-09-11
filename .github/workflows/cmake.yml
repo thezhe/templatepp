@@ -36,10 +36,10 @@ jobs:
     - name: Test
       run: ctest --test-dir ${{env.BUILD_PATH}} -C ${{env.BUILD_TYPE}} -j ${{env.PARALLEL_LEVEL}}
 
-    - name: Install
+    - name: Try Install
       run: cmake --install ${{env.BUILD_PATH}} --config ${{env.BUILD_TYPE}} --strip
 
-    - name: Upload Artifact
+    - name: Try Upload Artifact
       uses: actions/upload-artifact@v3.1.3
       with:
         name: ${{github.event.repository.name}}_${{github.ref_name}}_${{runner.os}}
@@ -53,13 +53,13 @@ jobs:
         contents: write
 
     steps:
-    - name: Download Artifacts
+    - name: Try Download Artifacts
       uses: actions/download-artifact@v3.0.2
       with:
         path: ${{env.INSTALL_PREFIX}}
 
-    - name: Zip Artifacts
-      run: for i in */; do zip -r "${i%/}.zip" "$i"; done
+    - name: Try Zip Artifacts
+      run: (for i in */; do zip -r "${i%/}.zip" "$i"; done) || true
 
     - name: Release
       uses: ncipollo/release-action@v1.13.0

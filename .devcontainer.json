@@ -1,0 +1,95 @@
+// For format details, see https://aka.ms/devcontainer.json.
+{
+    // TODO space between classes and namespaces format
+    // TODO move more config into /
+    //TODO lldb launch config, possibly install lldb
+    "name": "${localWorkspaceFolderBasename}",
+    "image": "ghcr.io/thezhe/cpp-devimage:master",
+    "runArgs": [
+        "-v",
+        "${localEnv:HOME}/.ssh/:/root/.ssh",
+        "--net=host",
+        "--cap-add=SYS_PTRACE"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "brobeson.vscode-cmake-lint",
+                "cheshirekow.cmake-format",
+                "DavidAnson.vscode-markdownlint",
+                "github.vscode-github-actions",
+                "Gruntfuggly.todo-tree",
+                "jbenden.c-cpp-flylint",
+                "llvm-vs-code-extensions.vscode-clangd",
+                "mine.cpplint",
+                "vadimcn.vscode-lldb",
+                "cschlosser.doxdocgen",
+                "SonarSource.sonarlint-vscode",
+                "streetsidesoftware.code-spell-checker",
+                "tdennis4496.cmantic",
+                "ms-vscode.cmake-tools"
+            ],
+            "settings": {
+                "cmake.configureOnOpen": false,
+                "cmake.installPrefix": "${workspaceFolder}/build/install",
+                "cmake.statusbar.visibility": "compact",
+                "editor.inlayHints.enabled": "off",
+                "editor.minimap.enabled": false,
+                "git.alwaysSignOff": true,
+                "git.autofetch": true,
+                "git.confirmSync": false,
+                "git.enableCommitSigning": true,
+                "git.enableSmartCommit": true,
+                "git.fetchOnPull": true,
+                "git.followTagsWhenSync": true,
+                "git.pullBeforeCheckout": true,
+                "workbench.colorTheme": "Visual Studio Light - C++",
+                // No telemetry
+                "sonarlint.disableTelemetry": true,
+                // Make sure dependencies, build files, etc. don't trigger linters (e.g., cmake-lint)
+                "cmake.buildDirectory": "${workspaceFolder}/../build",
+                // Formatting/Refactoring
+                "[cmake]": {
+                    "editor.defaultFormatter": "cheshirekow.cmake-format"
+                },
+                "C_mantic.headerGuard.style": "Add #pragma once",
+                "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+                "doxdocgen.c.firstLine": "/*!",
+                "doxdocgen.c.triggerSequence": "/*!",
+                "editor.detectIndentation": false,
+                "editor.formatOnSave": true,
+                "files.insertFinalNewline": true,
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
+                "files.encoding": "utf8",
+                "files.eol": "\n",
+                "editor.tabSize": 4,
+                "editor.insertSpaces": true,
+                // Linting
+                "c-cpp-flylint.clang.enable": false,
+                "c-cpp-flylint.cppcheck.inconclusive": true,
+                "c-cpp-flylint.cppcheck.standard": [
+                    "c++20"
+                ],
+                "c-cpp-flylint.excludeFromWorkspacePaths": [
+                    "build",
+                    ".cache"
+                ],
+                "c-cpp-flylint.flexelint.enable": false,
+                "c-cpp-flylint.lizard.extraArgs": [
+                    "-x",
+                    "/build/*"
+                ],
+                "c-cpp-flylint.standard": [
+                    "c++20"
+                ],
+                "clangd.arguments": [
+                    "--header-insertion=never"
+                ],
+                "cpplint.cpplintPath": "/usr/bin/cpplint",
+                "cpplint.lintMode": "workspace",
+                "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
+            }
+        }
+    }
+}

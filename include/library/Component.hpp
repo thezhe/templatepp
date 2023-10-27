@@ -4,7 +4,6 @@
 
 namespace library
 {
-
 class Component : public detail::Detail
 {
 public:
@@ -16,5 +15,4 @@ public:
 private:
     double field{};
 };
-
 } // namespace library

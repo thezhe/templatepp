@@ -1,14 +1,10 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
-    // TODO space between classes and namespaces format
-    // TODO move more config into /
-    //TODO lldb launch config, possibly install lldb
     "name": "${localWorkspaceFolderBasename}",
     "image": "ghcr.io/thezhe/cpp-devimage:master",
     "runArgs": [
         "-v",
         "${localEnv:HOME}/.ssh/:/root/.ssh",
-        "--net=host",
         "--cap-add=SYS_PTRACE"
     ],
     "customizations": {
@@ -88,7 +84,24 @@
                 ],
                 "cpplint.cpplintPath": "/usr/bin/cpplint",
                 "cpplint.lintMode": "workspace",
-                "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json"
+                "sonarlint.pathToCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+                "launch": {
+                    "version": "0.2.0",
+                    "configurations": [
+                        {
+                            "type": "lldb",
+                            "request": "launch",
+                            "name": "Debug CMake Launch Target",
+                            "program": "${command:cmake.launchTargetPath}",
+                            "args": [],
+                            "cwd": "${command:cmake.launchTargetDirectory}",
+                            "initCommands": [
+                                "settings set target.disable-aslr false"
+                            ]
+                        }
+                    ],
+                    "compounds": []
+                }
             }
         }
     }

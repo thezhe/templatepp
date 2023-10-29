@@ -67,15 +67,7 @@
                 "c-cpp-flylint.cppcheck.standard": [
                     "c++20"
                 ],
-                "c-cpp-flylint.excludeFromWorkspacePaths": [
-                    "build",
-                    ".cache"
-                ],
                 "c-cpp-flylint.flexelint.enable": false,
-                "c-cpp-flylint.lizard.extraArgs": [
-                    "-x",
-                    "/build/*"
-                ],
                 "c-cpp-flylint.standard": [
                     "c++20"
                 ],

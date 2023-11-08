@@ -9,7 +9,6 @@ public:
     {
         ++field;
     }
-    void m2() {}
 private:
     double field{};
 };

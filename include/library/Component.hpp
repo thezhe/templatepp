@@ -2,14 +2,19 @@
 #include "detail/Detail.hpp"
 namespace library
 {
-class Component : public detail::Detail
+class Component
 {
 public:
-    void method() noexcept
+    constexpr void method() noexcept
     {
-        ++field;
+        ++value;
+    }
+    [[nodiscard]] constexpr auto getField() const noexcept
+    {
+        return value;
     }
 private:
-    double field{};
+    double value{};
+    [[no_unique_address]] detail::Detail field{};
 };
 } // namespace library

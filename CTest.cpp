@@ -1,10 +1,9 @@
-#include <cassert>
 #include <cstdlib>
 #include <library.hpp>
-#define assert_true(condition) assert((condition)) // NOLINT
 auto main() -> int
 {
     library::Component component{};
-    assert_true(&component);
-    return EXIT_SUCCESS;
+    static_assert(static_cast<bool>(&component));
+    component.method();
+    return static_cast<int>(component.getField() > 0);
 }

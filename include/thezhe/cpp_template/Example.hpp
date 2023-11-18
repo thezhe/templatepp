@@ -1,8 +1,8 @@
 #pragma once
 #include "detail/Detail.hpp"
-namespace library
+namespace thezhe::cpp_template
 {
-class Component
+class Example
 {
 public:
     constexpr void method() noexcept
@@ -17,4 +17,4 @@ private:
     double value{};
     [[no_unique_address]] detail::Detail field{};
 };
-} // namespace library
+} // namespace thezhe::cpp_template

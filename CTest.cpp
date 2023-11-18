@@ -1,10 +1,10 @@
 #include <cstdlib>
-#include <library.hpp>
+#include <thezhe/cpp_template.hpp>
 auto main() -> int
 {
-    library::Component component{};
-    static_assert(static_cast<bool>(&component));
-    component.method();
-    const auto retval{ static_cast<int>(component.getField() == 0) };
+    thezhe::cpp_template::Example example{};
+    static_assert(static_cast<bool>(&example));
+    example.method();
+    const auto retval{ static_cast<int>(example.getField() == 0) };
     return retval;
 }

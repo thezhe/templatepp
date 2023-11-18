@@ -1,11 +1,7 @@
-# Single-Header Template
+# cpp-template
 
-## Interface
+Template for my C++ projects.
 
-`include/library.hpp`
+## Usage
 
-## Details
-
-- `CTest.cpp` - Test executable.
-- `include/library/*.hpp` - Component implementations.
-- `include/library/detail/*.hpp` - Implementation detail.
+Include `include/thezhe/cpp_template`.

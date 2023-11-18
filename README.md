@@ -1,7 +1,7 @@
 # templatepp
 
-Template for my C++ projects.
+My C++ project template.
 
 ## Usage
 
-Include `include/thezhe/templatepp`.
+Include `include/thezhe/templatepp.hpp`.

@@ -1,8 +1,8 @@
 #include <cstdlib>
-#include <thezhe/cpp_template.hpp>
+#include <thezhe/templatepp.hpp>
 auto main() -> int
 {
-    thezhe::cpp_template::Example example{};
+    thezhe::templatepp::Example example{};
     static_assert(static_cast<bool>(&example));
     example.method();
     const auto retval{ static_cast<int>(example.getField() == 0) };

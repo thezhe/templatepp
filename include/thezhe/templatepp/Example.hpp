@@ -1,6 +1,6 @@
 #pragma once
 #include "detail/Detail.hpp"
-namespace thezhe::cpp_template
+namespace thezhe::templatepp
 {
 class Example
 {
@@ -17,4 +17,4 @@ private:
     double value{};
     [[no_unique_address]] detail::Detail field{};
 };
-} // namespace thezhe::cpp_template
+} // namespace thezhe::templatepp

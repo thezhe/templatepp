@@ -1,13 +1,17 @@
 # Changelog
 
-## v1.1.0
+## v1.2.0 - 2023/11/17
 
-### Changed - 2023/11/17
+### Changed
 
-- Build and test CI
-- Code refactor
 - Better CMake practices
 - Namespace convention
+
+## v1.1.0 - 2023/09/18
+
+### Added
+
+- Build and test CI
 
 ## v1.0.0 - 2023/09/10
 

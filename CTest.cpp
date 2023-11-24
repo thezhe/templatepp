@@ -1,4 +1,3 @@
-#include <cstdlib>
 #include <thezhe/templatepp.hpp>
 auto main() -> int
 {

@@ -1,4 +1,4 @@
-# CMake build and test pipline with a release job for tagged commits.
+# CMake build and test pipeline with a release job for tagged commits.
 
 name: CMake
 

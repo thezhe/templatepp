@@ -1,5 +1,12 @@
 # Changelog
 
+## v1.3.0 - 2023/11/23
+
+### Changed
+
+- devcontainer
+- signed tag
+
 ## v1.2.0 - 2023/11/17
 
 ### Changed

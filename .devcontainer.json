@@ -1,6 +1,6 @@
 {
     "name": "${localWorkspaceFolderBasename}",
-    "image": "ghcr.io/thezhe/cpp-devimage",
+    "image": "ghcr.io/thezhe/devimagepp",
     "runArgs": [
         "-v",
         "${localEnv:HOME}/.ssh/:/root/.ssh"

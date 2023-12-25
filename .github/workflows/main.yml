@@ -37,7 +37,7 @@ jobs:
       contents: write
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v3.0.2
+        uses: actions/download-artifact@v4.1.0
 
       - name: Zip Artifacts
         run: for i in */; do zip -r "${i%/}.zip" "$i"; done

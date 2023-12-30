@@ -17,7 +17,7 @@ jobs:
 
     steps:
         - name: test
-          run: ls -a
+          run: ls -Force || ls -a
 #       - name: Checkout
 #         uses: actions/checkout@v4.1.1
 

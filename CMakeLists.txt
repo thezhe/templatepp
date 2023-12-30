@@ -15,3 +15,7 @@ target_link_libraries(CTest thezhe::templatepp)
 add_test(CTest CTest)
 # Install
 install(TARGETS CTest)
+# CPack
+set(CPACK_GENERATOR "ZIP")
+set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}_${CMAKE_SYSTEM_NAME}")
+include(CPack)

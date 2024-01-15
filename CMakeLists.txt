@@ -1,21 +1,25 @@
-# Boilerplate
-cmake_minimum_required(VERSION 3.15)
+# Project
+cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CXX_EXTENSIONS OFF)
+if(NOT CI_BUILD_VERSION)
+    set(CI_BUILD_VERSION "Development")
+endif()
+add_compile_definitions(CI_BUILD_VERSION=${CI_BUILD_VERSION})
+message(STATUS "CI_BUILD_VERSION=${CI_BUILD_VERSION}")
 enable_testing()
-# Build
 project(templatepp)
+# Build
 add_library(templatepp INTERFACE)
 target_include_directories(templatepp INTERFACE include)
 add_library(thezhe::templatepp ALIAS templatepp)
 # Test
-add_executable(CTest CTest.cpp)
-target_link_libraries(CTest thezhe::templatepp)
-add_test(CTest CTest)
+add_executable(testexec test.cpp)
+target_link_libraries(testexec thezhe::templatepp)
+add_test(NAME testexec COMMAND testexec)
 # Install
-install(TARGETS CTest)
-# CPack
+install(TARGETS testexec)
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}_${CMAKE_SYSTEM_NAME}")
 include(CPack)

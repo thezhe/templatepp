@@ -4,5 +4,8 @@
     "image": "ghcr.io/thezhe/devimagepp", // Rolling release (master branch)
     "runArgs": [
         "-v=${localEnv:HOME}/.ssh/:/root/.ssh" // Mount for tag/commit signing
-    ]
+    ],
+    "containerEnv": {
+        "CXXFLAGS": "-fopt-info-missed=missed.txt" // Log missed g++ optimizations to `build/missed.txt`
+    }
 }

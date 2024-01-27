@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.0 - 2024/01/27
+
+### Changed
+
+- naming conventions
+- `static_assert` testing
+
 ## v1.3.0 - 2023/11/23
 
 ### Changed

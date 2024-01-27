@@ -1,20 +1,16 @@
 #pragma once
-#include "detail/Detail.hpp"
+#include "detail/DetailExample.hpp"
 namespace thezhe::templatepp
 {
 class Example
 {
 public:
-    constexpr void method() noexcept
+    constexpr Example() noexcept = default;
+    [[nodiscard]] constexpr auto get() const noexcept
     {
-        ++value;
-    }
-    [[nodiscard]] constexpr auto getField() const noexcept
-    {
-        return value;
+        return detailExample.value;
     }
 private:
-    double value{};
-    [[no_unique_address]] detail::Detail field{};
+    detail::DetailExample detailExample{};
 };
 } // namespace thezhe::templatepp

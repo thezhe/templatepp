@@ -1,7 +1,8 @@
 #pragma once
 namespace thezhe::templatepp::detail
 {
-class Detail
+struct DetailExample
 {
+    bool value{ true };
 };
 } // namespace thezhe::templatepp::detail

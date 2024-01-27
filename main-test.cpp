@@ -10,7 +10,7 @@ auto main() -> int
     static_assert(example.get());
     // assert
     const std::string ci_build_version{ CI_BUILD_VERSION };
-    assert(!defined.empty());
+    assert(!ci_build_version.empty());
     // debug output
     std::cout << "CI_BUILD_VERSION=" << ci_build_version << '\n';
     return EXIT_SUCCESS;

@@ -7,6 +7,10 @@
 - naming conventions
 - `static_assert` testing
 
+## Fixed
+
+- `CXX_EXTENSIONS` variables does nothing -- change to `CMAKE_CXX_EXTENSIONS`
+
 ## v1.3.0 - 2023/11/23
 
 ### Changed

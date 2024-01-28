@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.1.1 - 2024/01/28
+
+## Fixed
+
+- unfetched git tags in GitHub workflow
+
 ## v2.1.0 - 2024/01/27
 
 ### Changed

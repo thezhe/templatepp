@@ -13,7 +13,7 @@ string(LENGTH "${ci_build_version_string}" ci_build_version_exists)
 if(NOT "${ci_build_version_exists}")
     set(ci_build_version_string "Development")
 endif()
-add_compile_definitions(CI_BUILD_VERSION="${ci_build_version_string}")
+add_compile_definitions(CI_BUILD_VERSION=${ci_build_version_string})
 # Build
 add_library(templatepp INTERFACE)
 target_include_directories(templatepp INTERFACE include)

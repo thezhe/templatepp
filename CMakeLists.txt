@@ -8,7 +8,7 @@ enable_testing()
 # Project
 project(templatepp)
 # Definitions (see https://github.com/thezhe/ci.cmake)
-if(DEFINED CI_BUILD_VERSION)
+if(DEFINED CI_BUILD_VERSION) # TODO use string function
     add_compile_definitions(CI_BUILD_VERSION=${CI_BUILD_VERSION})
     message(STATUS "CI_BUILD_VERSION=${CI_BUILD_VERSION}")
 else()

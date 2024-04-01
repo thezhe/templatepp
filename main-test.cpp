@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 #include <thezhe/templatepp.hpp>
-auto main() -> int
+int main()
 {
     using Example = thezhe::templatepp::Example;
     // static_assert

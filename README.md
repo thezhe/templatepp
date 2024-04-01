@@ -14,7 +14,18 @@ My C++ project template
 
 ## Usage
 
-Include `include/thezhe/templatepp.hpp`.
+```CMake
+# CMakeLists.txt
+
+include(FetchContent)
+FetchContent_Declare(
+    templatepp
+    GIT_REPOSITORY https://github.com/thezhe/templatepp.git
+    GIT_TAG <tag>
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(templatepp)
+```
 
 ## Versioning
 

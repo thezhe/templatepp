@@ -8,13 +8,12 @@ enable_testing()
 # Project
 project(templatepp)
 # Definitions (see https://github.com/thezhe/ci.cmake)
-if(DEFINED CI_BUILD_VERSION) # TODO use string function
-    add_compile_definitions(CI_BUILD_VERSION=${CI_BUILD_VERSION})
-    message(STATUS "CI_BUILD_VERSION=${CI_BUILD_VERSION}")
-else()
-    add_compile_definitions(CI_BUILD_VERSION="Development")
-    message(STATUS "CI_BUILD_VERSION=Development")
+string(APPEND ci_build_version_string "${CI_BUILD_VERSION}")
+string(LENGTH "${ci_build_version_string}" ci_build_version_exists)
+if(NOT "${ci_build_version_exists}")
+    set(ci_build_version_string "Development")
 endif()
+add_compile_definitions(CI_BUILD_VERSION="${ci_build_version_string}")
 # Build
 add_library(templatepp INTERFACE)
 target_include_directories(templatepp INTERFACE include)

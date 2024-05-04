@@ -2,6 +2,8 @@
 
 CMake project template
 
+## Components
+
 - `thezhe::templatepp` - library namespace and CMake target
 - `**/templatepp_<os>.zip` - artifact (if top level project)
 

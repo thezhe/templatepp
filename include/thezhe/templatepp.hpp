@@ -1,2 +1,2 @@
 #pragma once
-#include "templatepp/Example.hpp" // IWYU pragma: keep
+#include "templatepp/Templatepp.hpp" // IWYU pragma: keep

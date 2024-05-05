@@ -16,10 +16,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 project("thezhe/templatepp")
 # Build
 add_library(templatepp STATIC)
-target_include_directories(
-    templatepp
-    PUBLIC include
-    PRIVATE include/thezhe/templatepp)
+target_include_directories(templatepp PUBLIC include)
 target_sources(templatepp PRIVATE src/Templatepp.cpp)
 add_library(thezhe::templatepp ALIAS templatepp)
 # Test and package

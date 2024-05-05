@@ -1,9 +1,10 @@
-#undef NDEBUG // assert in Release
+#ifdef NDEBUG
+    #undef NDEBUG // assert in Release
+#endif
 #include <cassert>
-#include <thezhe/templatepp.hpp>
+#include <thezhe/templatepp/Templatepp.hpp>
 int main()
 {
     using namespace thezhe::templatepp; // NOLINT
-    const Templatepp templatepp{};
-    assert(Templatepp::assertTrue());
+    assert(Templatepp::returnTrue());
 }

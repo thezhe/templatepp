@@ -1,8 +1,7 @@
-#include "Templatepp.hpp" // NOLINT
+#include "Templatepp.hpp"
 namespace thezhe::templatepp
 {
-Templatepp::Templatepp() noexcept = default;
-bool Templatepp::assertTrue() noexcept
+bool Templatepp::returnTrue() noexcept
 {
     return true;
 }

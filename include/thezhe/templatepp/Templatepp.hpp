@@ -1,19 +1,16 @@
 #pragma once
-#include <string>
 namespace thezhe::templatepp
 {
+/*!
+ * @brief Template library class
+ */
 class Templatepp
 {
 public:
-    [[nodiscard]] static constexpr bool staticAssertTrue() noexcept
-    {
-        return true;
-    }
-    [[nodiscard]] static bool assertTrue()
-    {
-        return !std::string("1").empty();
-    }
-private:
-    constexpr Templatepp() noexcept = default;
+    Templatepp() noexcept;
+    /*!
+     * @brief Always returns `true`
+     */
+    [[nodiscard]] static bool assertTrue() noexcept;
 };
 } // namespace thezhe::templatepp

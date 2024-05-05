@@ -13,11 +13,14 @@ cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-project(templatepp)
+project("thezhe/templatepp")
 # Build
 add_library(templatepp STATIC)
-target_include_directories(templatepp PUBLIC include)
-target_sources(templatepp PRIVATE src/thezhe/templatepp/Templatepp.cpp)
+target_include_directories(
+    templatepp
+    PUBLIC include
+    PRIVATE include/thezhe/templatepp)
+target_sources(templatepp PRIVATE src/Templatepp.cpp)
 add_library(thezhe::templatepp ALIAS templatepp)
 # Test and package
 if(NOT PROJECT_IS_TOP_LEVEL)
@@ -25,11 +28,11 @@ if(NOT PROJECT_IS_TOP_LEVEL)
 endif()
 # Test
 enable_testing()
-add_executable(test-thezhe-templatepp test/thezhe/templatepp.cpp)
-target_link_libraries(test-thezhe-templatepp thezhe::templatepp)
-add_test(NAME test-thezhe-templatepp COMMAND test-thezhe-templatepp)
+add_executable(test-Templatepp test/Templatepp.cpp)
+target_link_libraries(test-Templatepp thezhe::templatepp)
+add_test(NAME test-Templatepp COMMAND test-Templatepp)
 # Package
-install(TARGETS test-thezhe-templatepp)
+install(TARGETS test-Templatepp)
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}_${CMAKE_SYSTEM_NAME}")
 include(CPack)

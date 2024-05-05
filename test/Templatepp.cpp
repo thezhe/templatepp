@@ -4,6 +4,6 @@
 int main()
 {
     using namespace thezhe::templatepp; // NOLINT
-    static_assert(Templatepp::staticAssertTrue());
+    const Templatepp templatepp{};
     assert(Templatepp::assertTrue());
 }

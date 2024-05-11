@@ -1,8 +1,8 @@
 #ifdef NDEBUG
     #undef NDEBUG // assert in Release
 #endif
+#include "thezhe/templatepp/Templatepp.hpp"
 #include <cassert>
-#include <thezhe/templatepp/Templatepp.hpp>
 int main()
 {
     using namespace thezhe::templatepp; // NOLINT

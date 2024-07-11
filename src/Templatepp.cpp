@@ -1,8 +1,8 @@
-#include "thezhe/templatepp/Templatepp.hpp"
-namespace thezhe::templatepp
+#include "thezhe/templatepps/Templatepp.hpp"
+namespace thezhe::templatepps
 {
 bool Templatepp::returnTrue() noexcept
 {
     return true;
 }
-} // namespace thezhe::templatepp
+} // namespace thezhe::templatepps

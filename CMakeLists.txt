@@ -33,5 +33,5 @@ install(TARGETS test-Templatepp)
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}_${CMAKE_SYSTEM_NAME}")
 include(CPack)
-# ci
+# CI
 thezhe_add_ci()

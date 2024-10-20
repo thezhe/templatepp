@@ -1,0 +1,4 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "image": "ghcr.io/thezhe/devimagepp:main"
+}

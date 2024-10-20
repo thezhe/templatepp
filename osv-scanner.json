@@ -1,0 +1,14 @@
+{
+    "results": [
+        {
+            "packages": [
+                {
+                    "package": {
+                        "name": "github.com/thezhe/add_cross_compile",
+                        "commit": "502091ea03b47f503298ea6c5917f6052b3bdc08"
+                    }
+                }
+            ]
+        }
+    ]
+}
